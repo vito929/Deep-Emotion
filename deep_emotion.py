@@ -49,17 +49,20 @@ class Deep_Emotion(nn.Module):
         return x
 
     def forward(self,input):
-        out = self.stn(input)
-
-        out = F.relu(self.conv1(out))
+        # out = self.stn(input)
+        out = F.relu(self.conv1(input))
+        # out = F.relu(self.conv1(out))
+        # print("1",out.shape)
         out = self.conv2(out)
         out = F.relu(self.pool2(out))
-
+        # print("2",out.shape)
         out = F.relu(self.conv3(out))
+        # print("3",out.shape)
         out = self.norm(self.conv4(out))
         out = F.relu(self.pool4(out))
-
+        # print("4",out.shape)
         out = F.dropout(out)
+        # print(out.shape)
         out = out.view(-1, 810)
         out = F.relu(self.fc1(out))
         out = self.fc2(out)
