@@ -2,7 +2,7 @@
 .DS_Store
 #
 __pycache__/
-
+*.pt
 .ipynb_checkpoints/
 Cascades/
 jaffe_new/
